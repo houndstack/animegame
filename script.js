@@ -34,7 +34,17 @@ function handleError(error) {
       console.error(error);
 }
 
-
+function restartGame(){
+  counter = 0;
+  document.getElementById('id1').disabled = false;
+  document.getElementById('id2').disabled = false;
+  document.getElementById("id1").value = "";
+  document.getElementById("id2").value = "";
+  console.log("RESTARTED")
+  document.getElementById("cover").replaceChildren()
+  document.getElementById("recommendations").replaceChildren()
+  document.getElementById('target').remove()
+}
 
 async function randomAnime(id){
     var query = `
@@ -100,6 +110,7 @@ async function randomAnime(id){
           response = await generate(query, variables)
           input2.value = randomId2
           targetTitle = document.createElement('span')
+          targetTitle.setAttribute('id', 'target')
           targetTitle.textContent = 'Target Anime: ' + response['data']['Media']['title']['romaji'];
           document.getElementById('inputs').appendChild(targetTitle)
           
@@ -121,6 +132,7 @@ async function randomAnime(id){
         counter = 0
         document.getElementById("cover").appendChild(this.win)
         document.getElementById("recommendations").replaceChildren()
+        document.getElementById('target').remove()
         return;
       }
     }
