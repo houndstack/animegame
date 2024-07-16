@@ -90,6 +90,13 @@ async function randomAnime(id){
       }
     `
     if(id==undefined){
+        
+        idArray = idArray4450
+        nameInput = document.getElementById("username")
+        if (nameInput && nameInput.value) {
+          idArray = await getUserList(nameInput.value)
+        }
+        
         input1 = document.getElementById("id1")
         if (input1 && input1.value) {
           console.log("value had")
@@ -177,3 +184,29 @@ async function randomAnime(id){
 }
 
 var counter = 0;
+
+async function getUserList(username){
+  var query = `
+  query ($name: String) {
+    MediaListCollection (userName: $name, type: ANIME) {
+      lists {
+        entries {
+          mediaId
+        }
+      }
+    }
+  }
+  `
+  variables = {
+      'name': username
+  }
+  allUserAnime = await generate(query, variables)
+  allUserAnime = allUserAnime['data']
+  userList = []
+  console.log(allUserAnime)
+  for(let i = 0;i<allUserAnime['MediaListCollection']['lists'][0]['entries'].length;i++){
+    userList.push(allUserAnime['MediaListCollection']['lists'][0]['entries'][i]['mediaId'])
+  }
+  return userList
+}
+
