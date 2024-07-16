@@ -98,7 +98,7 @@ async function randomAnime(id){
             'id': randomId2
           }
           response = await generate(query, variables)
-          console.log()
+          input2.value = randomId2
           targetTitle = document.createElement('span')
           targetTitle.textContent = 'Target Anime: ' + response['data']['Media']['title']['romaji'];
           document.getElementById('inputs').appendChild(targetTitle)
@@ -110,10 +110,10 @@ async function randomAnime(id){
         document.getElementById('id2').disabled = true;
     }
     else{
-      document.getElementById('id1').disabled = false;
-      document.getElementById('id2').disabled = false;
       counter++
       if(id==document.getElementById("id2").value){
+        document.getElementById('id1').disabled = false;
+        document.getElementById('id2').disabled = false;
         console.log("you winner")
         document.getElementById("cover").replaceChildren()
         this.win = document.createElement("div");
