@@ -117,7 +117,7 @@ async function randomAnime(id){
         console.log("you winner")
         document.getElementById("cover").replaceChildren()
         this.win = document.createElement("div");
-        this.win.textContent = "winner winner" + counter
+        this.win.textContent = "winner winner: took " + counter + ' moves'
         counter = 0
         document.getElementById("cover").appendChild(this.win)
         document.getElementById("recommendations").replaceChildren()
