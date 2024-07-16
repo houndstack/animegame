@@ -1,0 +1,12 @@
+html {
+  height: 100%;
+  width: 100%;
+}
+
+.recommendationButton {
+  display: inline-block
+}
+
+#recommendations {
+  text-align: center;
+}
