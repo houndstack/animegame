@@ -91,7 +91,7 @@ async function randomAnime(id){
     `
     if(id==undefined){
         
-        idArray = idArray4450
+        idArray = idArray1000
         nameInput = document.getElementById("username")
         if (nameInput && nameInput.value) {
           idArray = await getUserList(nameInput.value)
