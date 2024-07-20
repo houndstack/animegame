@@ -166,6 +166,9 @@ async function randomAnime(id){
     document.getElementById("recommendations").replaceChildren()
     for(var i = 0;i<recommendations.length;i++){
         let img = document.createElement("button");
+        if(recommendations[i]['node']['mediaRecommendation']==null){
+          continue;
+        }
         let id = recommendations[i]['node']['mediaRecommendation']['id']
         img.setAttribute('id', id)
         img.innerHTML = '<img src=' + recommendations[i]['node']['mediaRecommendation']['coverImage']['medium'] + ' />';
